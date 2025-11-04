@@ -1,10 +1,10 @@
-public class contaPoupanca extends Conta{
+public class contaPoupanca extends Conta implements OperacoesBancarias{
     int numero;
     String titular;
     int saldo;
 
     // Construtor
-    public contaPoupanca(String msg, int numero, String titular, int saldo) {
+    public contaPoupanca() {
         super(msg, numero, titular, saldo);
     }
 
@@ -12,5 +12,17 @@ public class contaPoupanca extends Conta{
     @Override
     public double atualizarSaldo(){
         return (saldo *  (0.3 * 100));
+    }
+
+    // Implementação dos metodos da Interface
+
+    @Override
+    public void transferir() {
+
+    }
+
+    @Override
+    public void imprimirExtrato(){
+
     }
 }

@@ -1,14 +1,16 @@
-public class contaCorrente extends Conta {
+public class contaCorrente extends Conta implements OperacoesBancarias {
     int numero;
     String titular;
     int saldo;
     double novoSaldo;
 
     // Construtor
-    public contaCorrente(String msg, int numero, String titular, int saldo, double novoSaldo) {
+    public contaCorrente() {
         super(msg, numero, titular, saldo);
         this.novoSaldo = novoSaldo;
     }
+
+
 
     // Implementação da Condição Taxa de Operação com uso de Exception
     public void TaxaOpereacao(int saldo, double novoSaldo, int valorTransferencia) throws SaldoInsuficienteException{
@@ -26,4 +28,20 @@ public class contaCorrente extends Conta {
         return novoSaldo;
     }
 
+    // Implementação dos metodos da interface
+    @Override
+    public void transferir() {
+        System.out.println("A conta que vai receber será: " + destino);
+    }
+
+    @Override
+    public void imprimirExtrato(){
+
+    }
 }
+
+
+
+
+
+
