@@ -10,19 +10,19 @@ public class contaPoupanca extends Conta {
     @Override
     public void transferir(Conta destino, int valor) throws SaldoInsuficienteException{
         if(saldo < valor) {
-            throw new SaldoInsuficienteException("Saldo insuficiente para transferência.");
+            throw new SaldoInsuficienteException("\n Saldo insuficiente para transferência.");
         }
 
         this.saldo -= valor;
         destino.depositar(valor);
-        System.out.println("Transferência de R$" + valor + " realizadad com sucesso");
+        System.out.println("\n Transferência de R$" + valor + " realizadado com sucesso");
     }
 
 
 
     @Override
     public void imprimirExtrato(){
-        System.out.println("--- Extrato Conta Corrente ---");
+        System.out.println("\n --- Extrato Conta Poupança ---");
         System.out.println("Titular: " + getTitular());
         System.out.println("Número: " + getNumero());
         System.out.println("Saldo atual: " + getSaldo());
@@ -33,7 +33,7 @@ public class contaPoupanca extends Conta {
     public void atualizarSaldo(){
         double rendimento = saldo * rendimentoMensal;
         saldo += rendimento;
-        System.out.println("Saldo atualizado com sucesso. O novo saldo possuindo rendimento mensal é de: " + rendimento);
+        System.out.println("\n Saldo atualizado com sucesso. O novo saldo possuindo rendimento mensal é de: " + rendimento);
     }
 
     // Implementação dos metodos da Interface

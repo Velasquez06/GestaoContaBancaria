@@ -13,24 +13,24 @@ public Conta(int numero, String titular, int saldo){
     public void depositar(double valor){
         if (valor > 0){
             saldo += valor;
-            System.out.println("Depósito de R$ " + valor + "realizado com sucesso");
+            System.out.println("\n Depósito de R$ " + valor + " realizado com sucesso");
         }else{
-            System.out.println("Valor insuficiente para depósito");
+            System.out.println("\n Valor insuficiente para depósito");
         }
 }
 
     // Metodo destinado ao saque com exceção
     public void sacar(int valor) throws SaldoInsuficienteException{
         if(valor <= 0){
-            System.out.println("Não é possível sacar esse valor");
+            System.out.println("\n Não é possível sacar esse valor");
             return;
         }
         if (saldo < valor){
-            throw new SaldoInsuficienteException("Saldo insuficiente para realizar operação. Valor Solicitado: " + valor);
+            throw new SaldoInsuficienteException("\n Saldo insuficiente para realizar operação. Valor Solicitado: " + valor);
         }
 
         saldo -= valor;
-        System.out.println("Saque de R$" + valor + "realizado com sucesso");
+        System.out.println("\n Saque de R$" + valor + " realizado com sucesso");
     }
 
     //Getters

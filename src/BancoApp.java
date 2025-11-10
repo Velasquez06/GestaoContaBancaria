@@ -1,5 +1,5 @@
 public class BancoApp {
-    public static void Main(String [] args) {
+    public static void main(String[] args) {
         try{
             contaCorrente cc = new contaCorrente(1, "Antonio Augusto", 3500);
             contaPoupanca cp = new contaPoupanca(2, "Kimberly ... ", 5500);
