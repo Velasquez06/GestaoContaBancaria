@@ -1,17 +1,20 @@
 public class BancoApp {
-    public static void Main(String [] args){
+    public static void Main(String [] args) {
+        try{
+            contaCorrente cc = new contaCorrente(1, "Antonio Augusto", 3500);
+            contaPoupanca cp = new contaPoupanca(2, "Kimberly ... ", 5500);
 
-    contaCorrente cc = new contaCorrente();
-    cc.numero = 1234;
-    cc.titular = "Antônio Augusto";
-    cc.saldo = 15000;
+            cc.depositar(500);
+            cp.atualizarSaldo();
 
-    contaPoupanca cp = new contaPoupanca();
-    cp.numero = 4321;
-    cp.titular = "Kimberly Silva";
-    cp.saldo = 20000;
+            cc.sacar(300);
+            cc.transferir(cp, 200);
 
-        System.out.println("Antônio Augusto transferiu ");
+            cc.imprimirExtrato();
+            cp.imprimirExtrato();
 
+        }catch (SaldoInsuficienteException e){
+            System.out.println("ERROR: " + e.getMessage());
+        }
     }
 }

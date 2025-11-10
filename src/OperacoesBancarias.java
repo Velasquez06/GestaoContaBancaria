@@ -1,10 +1,5 @@
 public interface OperacoesBancarias {
-    void transferir();
+ void transferir(Conta destino, int valor) throws SaldoInsuficienteException;
 
-    double VALOR = 10000;
-    Conta destino = null;
-
-    void imprimirExtrato();
-
-    boolean IMPRIME = true;
+ void imprimirExtrato();
 }

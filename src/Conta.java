@@ -1,31 +1,37 @@
-public abstract class Conta extends SaldoInsuficienteException{
+public abstract class Conta implements OperacoesBancarias{
     private int numero;
     private String titular;
-    private int saldo;
+    protected int saldo;
 
-public Conta(String msg, int numero, String titular, int saldo){
-    super(msg);
+public Conta(int numero, String titular, int saldo){
     this.numero = numero;
     this.titular = titular;
     this.saldo = saldo;
 }
 
     // Métodos da Classe Conta
-    public void depositar(){
-        double valor;
+    public void depositar(double valor){
+        if (valor > 0){
+            saldo += valor;
+            System.out.println("Depósito de R$ " + valor + "realizado com sucesso");
+        }else{
+            System.out.println("Valor insuficiente para depósito");
+        }
 }
 
-    // Método destinado ao saque com exceção
-    public void sacar(int saldo, double valor) throws SaldoInsuficienteException{
-        if(valor < saldo){
-            throw new SaldoInsuficienteException("Saldo Insuficiente!! Valor solicitado: " + valor + " Saldo Disponível: " + saldo);
+    // Metodo destinado ao saque com exceção
+    public void sacar(int valor) throws SaldoInsuficienteException{
+        if(valor <= 0){
+            System.out.println("Não é possível sacar esse valor");
+            return;
         }
-        double saldorestante = (saldo -= valor);
-        System.out.println("O valor atual é: " + saldorestante);
+        if (saldo < valor){
+            throw new SaldoInsuficienteException("Saldo insuficiente para realizar operação. Valor Solicitado: " + valor);
+        }
+
+        saldo -= valor;
+        System.out.println("Saque de R$" + valor + "realizado com sucesso");
     }
-
-    public abstract double atualizarSaldo();
-
 
     //Getters
     public int getNumero() {
@@ -39,4 +45,9 @@ public Conta(String msg, int numero, String titular, int saldo){
     public int getSaldo() {
         return saldo;
     }
+
+    // Metodos para implementação nas subclasses
+    public abstract void atualizarSaldo();
 }
+
+

@@ -1,42 +1,40 @@
-public class contaCorrente extends Conta implements OperacoesBancarias {
-    int numero;
-    String titular;
-    int saldo;
-    double novoSaldo;
+public class contaCorrente extends Conta  {
+
+
+    // Constante para cobrar Taxa nas operações
+    private static final double taxaOperacao = 0.005;
 
     // Construtor
-    public contaCorrente() {
-        super(msg, numero, titular, saldo);
-        this.novoSaldo = novoSaldo;
+    public contaCorrente(int numero, String titular, int saldo) {
+        super(numero, titular, saldo);
     }
 
 
 
     // Implementação da Condição Taxa de Operação com uso de Exception
-    public void TaxaOpereacao(int saldo, double novoSaldo, int valorTransferencia) throws SaldoInsuficienteException{
-        valorTransferencia = (int) (saldo - (0.5 * 100));
-        if (valorTransferencia > saldo){
-            throw new SaldoInsuficienteException("Saldo Insuficiente para transferência!! " + saldo + " | Saldo disponível: " + valorTransferencia);
+    public void transferir(Conta destino , int valor) throws SaldoInsuficienteException{
+        double novoValor = valor + (valor * taxaOperacao);
+
+        if(saldo < novoValor){
+            throw new SaldoInsuficienteException("Não é possível fazer essa transferência. Saldo Insuficiante!!");
         }
-        novoSaldo = (saldo - valorTransferencia);
-        System.out.println("O valor atual é: " + novoSaldo);
+        this.saldo -= novoValor;
+        destino.depositar(valor);
+        System.out.println("Transferência de R$" + valor + " realizada com sucesso\n OBS: Taxa de Tranferência aplicada");
     }
 
     // Metodo da classe Mãe
     @Override
-    public double atualizarSaldo(){
-        return novoSaldo;
-    }
-
-    // Implementação dos metodos da interface
-    @Override
-    public void transferir() {
-        System.out.println("A conta que vai receber será: " + destino);
-    }
-
-    @Override
     public void imprimirExtrato(){
+        System.out.println("--- Extrato Conta Corrente ---");
+        System.out.println("Titular: " + getTitular());
+        System.out.println("Número: " + getNumero());
+        System.out.println("Saldo atual: " + getSaldo());
+    }
 
+    @Override
+    public void atualizarSaldo(){
+        System.out.println("");
     }
 }
 
