@@ -32,11 +32,7 @@ public class contaPoupanca extends Conta {
     @Override
     public void atualizarSaldo(){
         double rendimento = saldo * rendimentoMensal;
-        saldo += rendimento;
-        System.out.println("\n Saldo atualizado com sucesso. O novo saldo possuindo rendimento mensal é de: " + rendimento);
+        int novoSaldo = saldo += rendimento;
+        System.out.println("\n Saldo de " + getTitular() + " atualizado com sucesso. O novo saldo possuindo rendimento mensal é de: " + novoSaldo);
     }
-
-    // Implementação dos metodos da Interface
-
-
 }

@@ -3,21 +3,20 @@ public abstract class Conta implements OperacoesBancarias{
     private String titular;
     protected int saldo;
 
-public Conta(int numero, String titular, int saldo){
-    this.numero = numero;
-    this.titular = titular;
-    this.saldo = saldo;
-}
+    public Conta(int numero, String titular, int saldo){
+        this.numero = numero;
+        this.titular = titular;
+        this.saldo = saldo;
+    }
 
     // Métodos da Classe Conta
     public void depositar(double valor){
         if (valor > 0){
-            saldo += valor;
-            System.out.println("\n Depósito de R$ " + valor + " realizado com sucesso");
+            System.out.println("\n Depósito de R$ " + valor + " realizado com sucesso.\n Realizado por: " + titular);
         }else{
             System.out.println("\n Valor insuficiente para depósito");
         }
-}
+    }
 
     // Metodo destinado ao saque com exceção
     public void sacar(int valor) throws SaldoInsuficienteException{
@@ -30,7 +29,7 @@ public Conta(int numero, String titular, int saldo){
         }
 
         saldo -= valor;
-        System.out.println("\n Saque de R$" + valor + " realizado com sucesso");
+        System.out.println("\n Saque de R$" + valor + " realizado com sucesso\n Realizado por: " + titular);
     }
 
     //Getters

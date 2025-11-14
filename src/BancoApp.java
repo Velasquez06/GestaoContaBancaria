@@ -1,8 +1,8 @@
 public class BancoApp {
     public static void main(String[] args) {
         try{
-            contaCorrente cc = new contaCorrente(1, "Antonio Augusto", 3500);
-            contaPoupanca cp = new contaPoupanca(2, "Kimberly ... ", 5500);
+            contaCorrente cc = new contaCorrente(1, "Antonio Augusto da Silva Gato", 3500);
+            contaPoupanca cp = new contaPoupanca(2, "Kimberly da Silva Cachorro ", 5500);
 
             cc.depositar(500);
             cp.atualizarSaldo();

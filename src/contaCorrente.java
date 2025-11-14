@@ -19,8 +19,8 @@ public class contaCorrente extends Conta  {
             throw new SaldoInsuficienteException("\n Não é possível fazer essa transferência. Saldo Insuficiante!!");
         }
         this.saldo -= novoValor;
-        destino.depositar(valor);
-        System.out.println("\n Transferência de R$" + valor + " realizada com sucesso\n OBS: Taxa de Tranferência aplicada");
+        destino.depositar(novoValor);
+        System.out.println("\n Transferência de R$" + novoValor + " feita por " + getTitular() + " para " + destino.getTitular() + " realizada com sucesso\n OBS: Taxa de Tranferência aplicada");
     }
 
     // Metodo da classe Mãe
@@ -37,9 +37,3 @@ public class contaCorrente extends Conta  {
         System.out.println("\n Saldo atual: " + saldo);
     }
 }
-
-
-
-
-
-
