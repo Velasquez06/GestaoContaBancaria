@@ -2,7 +2,7 @@ public class contaCorrente extends Conta  {
 
 
     // Constante para cobrar Taxa nas operações
-    private static final double taxaOperacao = 0.005;
+    private static final double taxaOperacao = (0.05 * 100);
 
     // Construtor
     public contaCorrente(int numero, String titular, int saldo) {

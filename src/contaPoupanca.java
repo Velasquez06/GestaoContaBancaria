@@ -1,5 +1,5 @@
 public class contaPoupanca extends Conta {
-    private static final double rendimentoMensal = 0.003;
+    private static final double rendimentoMensal = (0.03 * 100);
 
     // Construtor
     public contaPoupanca(int numero, String titular, int saldo) {
@@ -33,6 +33,6 @@ public class contaPoupanca extends Conta {
     public void atualizarSaldo(){
         double rendimento = saldo * rendimentoMensal;
         int novoSaldo = saldo += rendimento;
-        System.out.println("\n Saldo de " + getTitular() + " atualizado com sucesso. O novo saldo possuindo rendimento mensal é de: " + novoSaldo);
+        System.out.println("\n Saldo de " + getTitular() + " atualizado com sucesso.\n O novo saldo possuindo rendimento mensal é de: " + novoSaldo);
     }
 }
